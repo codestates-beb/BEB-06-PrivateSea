@@ -4,6 +4,7 @@ function Nav() {
   return (
     <div>
       <input type="text" placeholder="search"></input>
+      <button>search</button>
       <button>Explore</button>
       <button>Create</button>
       <button>Mypage</button>
@@ -12,4 +13,4 @@ function Nav() {
   );
 }
 
-export default Nav();
+export default Nav;
