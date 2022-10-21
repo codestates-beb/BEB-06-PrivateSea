@@ -1,96 +1,97 @@
 import axios from "axios";
-import { application } from "express";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Nav from "../Nav";
 
-/**
+function Explore(props) {
+  const [theme, setTheme] = useState(undefined);
+  // 각 theme이름이 state로 들어옴
+  const [nftInfo, setNftInfo] = useState([
+    {
+      url: "https://i.pinimg.com/564x/a4/13/97/a41397f4bb6a4e6d4fab08034333974e.jpg",
+      name: "Sheep",
+      price: "10ETH",
+    },
+  ]);
+  //[{},{},{}...]
+  //예시로  초기 state 값 넣어둠.
 
-처음에는 trendingNFT 화면 보여주다가 
+  //useEffect 로 theme  => undefined 값으로 변경
 
-<Art />, <Sport />, <Photo /> 불려오는 걸로 
-각 테마별로 컴포넌트 만들면 
+  useEffect(() => {
+    setTheme(undefined);
+  }, []);
 
-const [art, setArt] = useState(); <- Detail.js에서 재사용 가능하지 않을까?
-
-art.map((a, i) => {
-  return 
-    <ArtNft art = { art[i]} i={i+1} /> 
-    // 각 테마별 nft들이 보여지지 않을까? 데이터는 어떻게 불려올지 모르겠다 
-})
-
-
- */
-
-
-
-function Explore() {
-
-  const [nft, setNft] = useState(undefined); 
-  // 각 테마별 useState 만들어서 -> 버튼 클릭하면 입력값 해당테마 nft가 되도록
-
-  const [art, setArt] = useState(0);
-  const [sport, setSport] = useState(0);
-
-
-// 같은 동작, 카테고리만 다름-> 카테고리를 params
-// 
-
-  const getArtNFT = function(){
-    // axios.get 하면 DB에서 관련 NFT 가져오도록 
-    axios
-      .get("http://localhost:8080/nft/art/:id") // -> :id 추가해서, 개별 nft 보이도록 
+  async function getThemeNft(e) {
+    console.log(e.target.value);
+    setTheme(e);
+    //theme 별로 요청 ....
+    //모든 nft 가져와서 여기서 filter 하기에는 느려질 것 같다는 생각 함.
+    await axios
+      .get(`http://localhost:8080/nft/${theme}`)
       .then((result) => {
-        console.log();
-        console.log();
-        setNft(result.data)
+        const nfts = [];
+        const data = result.data;
+        for (let i = 0; i < data.length; i++) {
+          nfts.push(data[i]);
+        }
+        setNftInfo(nfts);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  }
-
-  const getTrendingNFT = function(){
-    // axios.get 하면 DB에서 관련 NFT 가져오도록 
-    axios
-      .get("http://localhost:8080/nft/trending")
-      .then((result) => {
-        console.log();
-        console.log();
-        setNft(result.data)
-      });
-  }
-
-  const getSportNFT = function(){
-    // axios.get 하면 DB에서 관련 NFT 가져오도록 
-    axios
-      .get("http://localhost:8080/nft/sport")
-      .then((result) => {
-        console.log();
-        setNft(result.data)
-      });
-  }
-
-  const getPhotoNFT = function(){
-    // axios.get 하면 DB에서 관련 NFT 가져오도록 
-    axios
-      .get("http://localhost:8080/nft/photo")
-      .then((result) => {
-        console.log();
-        setNft(result.data)
-      });
+    //like this.. nftInfo = {data:[{},{},{}...]}
   }
 
   return (
-
-    
-    // 각 테마별  서버 연결
-    // 각 테마별 버튼 총 4개 만들기: 버튼 누르면 -> 해당 테마 페이지로 이동 
-
-    
-
     <div>
-      <Nav />
-      <button onClick={getArtnft}> art </button> 
-      <button onClick={()=>{}}> trending </button>
+      <button onClick={getThemeNft} value="trending">
+        {" "}
+        trending{" "}
+      </button>
+      <button onClick={getThemeNft} value="art">
+        {" "}
+        art{" "}
+      </button>
+      <button onClick={getThemeNft} value="sport">
+        {" "}
+        sport{" "}
+      </button>
+      <button onClick={getThemeNft} value="photography">
+        {" "}
+        photography{" "}
+      </button>
 
-      Explore Page
+      {/* ==== 첫 Explore page ===== */}
+      {theme === undefined && (
+        <div>
+          {props.allNfts.map((a) => {
+            return (
+              <div>
+                <img src={a.url}></img>
+                <div>{a.name}</div>
+                <div>{a.price}</div>
+                <button>buy</button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* ==== 테마별 Explore page ==== */}
+      {theme !== undefined && (
+        <div>
+          {nftInfo.map((nft) => {
+            return (
+              <div>
+                <img src={nft.url}></img>
+                <div>{nft.name}</div>
+                <div>{nft.price}</div>
+                <button>buy</button>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
