@@ -1,3 +1,4 @@
+
 /* eslint-disable */
 
 import { React, useState, useEffect } from "react";
@@ -6,8 +7,13 @@ import axios from "axios";
 import Detail from "./Detail";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-/** 륜하
-1. 지갑연결 -> useEffect
+
+
+
+function Mypage() {
+  /**
+1. 지갑연결 
+
 연결 X -> 주소란에 , 사이트창에 "아직 연결 안 됐습니다" 알림
 연결 O -> 주소란에 자기 acount 보임, 사이트창에 자기가 소유한 nft가 보임 
 2. 서버에 account값 보내고 정보 받기; 간단하게 보이는 화면 -> 개별 nft 누르면 Detail.js로 이동  
@@ -20,6 +26,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 
 function Mypage() {
+
 
     const [connection, setConnection] = useState(0);
     const [nft, setNft] = useState([]); 
@@ -89,6 +96,11 @@ function Mypage() {
 
         </div>
     ); 
+
+  4. 서버에 sell 요청 보내면 "(임의)판매가 완료되었습니다~" 등의 문구가 뜨도록 <- 문구는 백에서 알아서 
+ */
+  return <div>Mypage Page</div>;
+
 }
 
 export default Mypage; 

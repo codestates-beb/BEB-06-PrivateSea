@@ -2,11 +2,19 @@
 
 import { React, useState, useEffect } from "react";
 import Nav from "../Nav";
+
 import "./Create.css"
 
 /** 륜하
 1. 사용자가 nft 생성을 위해 필요한 정보 -> 모두 input 처리 
 image 클릭하면 -> local에서 image upload 
+
+function Create() {
+  return (
+    /** 
+1. 사용자가 nft 생성을 위해 필요한 정보 -> input 처리 
+image 클릭하면 -> desktop 이나 image upload 
+
 item name(nft name)
 description
 collection 
@@ -16,6 +24,7 @@ theme: 3가지 옵션 중 하나를 선택하도록 - art, sport, photo
 1번의 정보 + account값
 
  */
+
 
 function Create() {
 
@@ -35,7 +44,6 @@ function Create() {
 
 
     <div>
-      <Nav />
       <br/>
 
       <h1> Create New Item </h1>
@@ -65,6 +73,9 @@ function Create() {
     <button class="create"> Create </button>
 
     </div>
+
+    <div>Create Page</div>
+
   );
 }
 
