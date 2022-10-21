@@ -1,3 +1,6 @@
+
+/* eslint-disable */
+
 import React, { useEffect, useState, Component } from "react";
 import "./App.css";
 import Slider from "./common/Carousel";
