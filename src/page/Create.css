@@ -1,0 +1,16 @@
+div {
+    box-sizing: border-box;
+}
+
+.comment {
+    color: red;
+}
+
+.upload {
+    box-sizing: 200px;
+    border: dotted;
+}
+
+.create {
+    color: skyblue;
+}
