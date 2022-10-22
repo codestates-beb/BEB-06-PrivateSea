@@ -1,13 +1,10 @@
-import React from "react";
-import Nav from "../Nav";
+import { React, useState, useEffect } from "react";
 
 function Mypage() {
   return (
     <div>
-      <Nav />
-      Mypage Page
+      <h1> My Page </h1>
     </div>
   );
 }
-
 export default Mypage;

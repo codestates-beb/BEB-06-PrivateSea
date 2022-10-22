@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Explore from "./page/Explore";
 import Create from "./page/Create";
 import Mypage from "./page/Mypage";
+import Detail from "./page/Detail";
 import Main from "./Main";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/explore" element={<Explore />}></Route>
         <Route path="/create" element={<Create />}></Route>
         <Route path="/mypage" element={<Mypage />}></Route>
+        <Route path="/detail" element={<Detail />}></Route>
       </Routes>
     </BrowserRouter>
   );
