@@ -1,20 +1,6 @@
 import React from "react";
 import Nav from "../Nav";
 
-//
-
-// NFT 하나 누르면 나오는 상세 페이지
-
-// async function handleSearch(e) {
-//     setSearchValue(e.target.value);
-//     await axios
-//       .get(`http://localhost:8080/nft/${searchValue}`) <- params 문법
-//       .then((result) => {
-//         //axios({method:get , url:'/nft/${search}'})
-//         console.log(result.data);
-//       });
-//   }
-
 /**
 const function 미술(props){
     return(
@@ -30,7 +16,7 @@ const function 미술(props){
 
  */
 
-function Detail() {
+function Detail(props) {
   //   const [detailNft, setDetailNft] = useState();
 
   return <div>Trade Page</div>;

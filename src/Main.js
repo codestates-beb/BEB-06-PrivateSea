@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 
 import React, { useEffect, useState, Component } from "react";
@@ -20,6 +19,7 @@ function Main() {
   //allNfts => dummy data
   const [allNfts, setAllNfts] = useState([
     {
+      _id: "4567",
       url: "https://i.pinimg.com/564x/dd/a1/db/dda1dbe5970aaa08839cac4f7ce6dcae.jpg",
       name: "Gorila",
       price: "9ETH",
