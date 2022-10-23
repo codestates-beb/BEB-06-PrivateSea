@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-const test = require("./reactrouter.js")
+const path = require('path');
 const cors = require('cors');
 app.use(cors());
+const multer = require('multer')
+const upload = multer({dest: 'image/'})
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
@@ -13,9 +15,13 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true }, func
         return console.log(err)
     }
    
-    app.get('/nft/:theme', function(req, res){
+    app.get('/nft/:theme?', function(req, res){
         db = client.db('project1');
-        db.collection('img_table').find({theme : req.params.theme}).toArray(function(err, result){
+        let query = {}
+        if(req.params.theme){
+            query.theme = req.params.theme;
+        }
+        db.collection('img_table').find(query).toArray(function(err, result){
             if(err) return console.log(err);
             console.log(result);
             res.json({result : result});
@@ -29,6 +35,17 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true }, func
             if(err) return console.log(err)
             console.log(result)
             res.json({result :  result});
+        })
+    })
+
+    app.post('/nft/image', upload.single('image'), function(req, res, next){
+        console.log(req.file);
+        console.log(req.body);
+        db = client.db('project1');
+        const uploaded = {owner : req.body.owner, name : req.body.name, theme : req.body.theme, tokenid : req.body.tokenid, price : req.body.price, url : req.file.filename, originalname : req.file.originalname}
+        db.collection('img_table').insertOne(uploaded, function(err, result){
+            console.log('저장완료');
+            res.json({result : result})
         })
     })
 
@@ -65,8 +82,3 @@ MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true }, func
         console.log('listening on 8080')
     })
 })
-//req.prams.id 를 filter 처리한다. (account, tokenId, collectionName)
-//데이터베이스에서 받은 정보를 프론트로 보내준다.
-
-//req.prams.id 를 filter 처리한다. (account, tokenId, collectionName)
-//데이터베이스에서 받은 정보를 프론트로 보내준다.
