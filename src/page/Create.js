@@ -29,6 +29,8 @@ function Create(){
   const [price, setPrice] = useState();
   // const [tokenId, setTokenId] = useState();
   const [theme, setTheme] = useState(['art', 'sport', 'photo'])
+
+
   const [imgFile , setImgFile]  = useState();
   const [contractAddress , seta] = useState("0x2b8Dbdfe2D8A73d72b2BED2E27F519c52eE6Fa39");
 
@@ -52,6 +54,7 @@ function Create(){
     setDesc(e.target.value);
   }
 
+
   const minting = async () => {
     const imgUrl = await client.add(imgFile); // state에서 가져오기 
     // console.log("https://openseahello.infura-ipfs.io/ipfs/" + imgUrl.path);
@@ -66,6 +69,7 @@ function Create(){
     const metaData = await client.add(JSON.stringify(_json));
     const metaDataUrl = "https://openseahello.infura-ipfs.io/ipfs/" + metaData.path;
     console.log(metaDataUrl); // 메타데이터(nft 데이터)
+
 
     const web3 = new Web3(window.ethereum);
     const accounts = await web3.eth.getAccounts();
@@ -124,6 +128,7 @@ function Create(){
           <button className="create_button"  style={{ marginRight : "30px" }} > Create </button>
           <button className="create_button" onClick={minting}  > Reset </button>
         </div>
+
       </div>
   );
 
