@@ -1,6 +1,5 @@
 import axios from "axios";
 import { React, useState, useEffect } from "react";
-import Nav from "../Nav";
 
 function Explore(props) {
   const [theme, setTheme] = useState(undefined);
