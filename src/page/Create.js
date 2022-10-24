@@ -72,7 +72,7 @@ function Create() {
     </div>
   );
 }
-
+//ㅇ
 // 데이터 업로드 하는 곳 - Create에서 data 받아오는 props
 function Upload(props) {
   return (
