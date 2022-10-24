@@ -8,7 +8,7 @@ function Detail(props) {
     <div>
       detail page
       {props.allNftsforDetail
-        .filter((a) => a._id == id)
+        .filter((a) => a.tokenid == id)
         .map((i, a) => {
           return (
             <div key={a}>
