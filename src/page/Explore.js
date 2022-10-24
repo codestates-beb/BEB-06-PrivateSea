@@ -39,10 +39,12 @@ function Explore(props) {
       .then((result) => {
         const nfts = [];
         const data = result.data;
+        console.log(data);
         for (let i = 0; i < data.length; i++) {
           nfts.push(data[i]);
         }
         setNftInfo(nfts);
+        console.log(nftInfo);
       })
       .catch((error) => {
         console.log(error);
