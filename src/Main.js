@@ -65,19 +65,19 @@ function Main() {
     setSearchValue(e.target.value);
     try {
       await axios
-        .get(`http://localhost:8080/nft?value=${searchValue}`)
+        .get(`http://localhost:8080/search?value=${searchValue}`)
         .then((result) => {
           // {data: [{},{},{},{}]}
           //들어오는 result.data를 for문으로 돌면서 각각의 nft정보를 useState에 넣어둠.
           //그 state 값 Nav 로 props 시켜주기
           let nfts = [];
-          const data = result.data;
+          const data = result.data.result;
           for (let i = 0; i < data.length; i++) {
             nfts.push(data[i]);
           }
 
           setNftsInfo(nfts);
-          console.log(`nft data들 가져왔다 ${result.data}`);
+          console.log(`nft data들 가져왔다 ${result.data.result}`);
         });
     } catch (err) {
       console.log(err);

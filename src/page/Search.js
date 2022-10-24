@@ -5,15 +5,15 @@ function Search(props) {
     return (
       <div>
         search Page
-        {props.nftsInfo.map((nft) => {
+        {props.nftsInfo.map((nft) => (
           <div>
             <h1>{nft.name}</h1>
             <img src={nft.url} value={nft._id} />
             <p>{nft.name}</p>
             <p>{nft.price}</p>
             <button>buy</button>
-          </div>;
-        })}
+          </div>
+        ))}
       </div>
     );
   } else {
