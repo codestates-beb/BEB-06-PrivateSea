@@ -12,6 +12,7 @@ function Nav(props) {
         className="search_bar"
         type="text"
         placeholder="Search items, collections, and accounts"
+        onChange={props.handleTarget}
       ></input>
       <div className="nav_button" value="search" onClick={props.handleSearch}>
         search

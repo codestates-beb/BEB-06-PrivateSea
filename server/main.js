@@ -24,6 +24,7 @@ MongoClient.connect(
       if (req.params.theme) {
         query.theme = req.params.theme;
       }
+
       db.collection("img_table")
         .find(query)
         .toArray(function (err, result) {

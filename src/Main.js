@@ -18,6 +18,7 @@ function Main() {
   const [nftsInfo, setNftsInfo] = useState(undefined); //[{name,url,owner,theme,price,tokenid},{},{}]
   const [theme, setTheme] = useState(undefined);
   const [detail, setDetail] = useState(false);
+  const [searchTarget, setSearchTarget] = useState("");
   //dummy data
   const [allNfts, setAllNfts] = useState([
     {
@@ -55,6 +56,9 @@ function Main() {
     //detail을 false로 바꿔야됨
   }
 
+  function handleTarget(e) {
+    setSearchTarget(e.target.value);
+  }
   // search click function
   async function handleSearch(e) {
     console.log(e.currentTarget.getAttribute("value"));
@@ -62,10 +66,9 @@ function Main() {
     setTheme(undefined);
     setDetail(false);
 
-    setSearchValue(e.target.value);
     try {
       await axios
-        .get(`http://localhost:8080/search?value=${searchValue}`)
+        .get(`http://localhost:8080/search?value=${searchTarget}`)
         .then((result) => {
           // {data: [{},{},{},{}]}
           //들어오는 result.data를 for문으로 돌면서 각각의 nft정보를 useState에 넣어둠.
@@ -88,7 +91,7 @@ function Main() {
   async function getAllNft() {
     await axios.get("http://localhost:8080/nft").then((result) => {
       let allNft = [];
-      const nftData = result.data;
+      const nftData = result.data.result;
       for (let i = 0; i < nftData.length; i++) {
         allNft.push(nftData[i]);
       }
@@ -134,8 +137,9 @@ function Main() {
         nftsInfo={nftsInfo}
         handlePageChange={handlePageChange}
         handleSearch={handleSearch}
+        handleTarget={handleTarget}
       />
-      <secsion className="section">
+      <div className="section">
         {/*  ====== main page ======*/}
         {secsion === "main" && (
           <div>
@@ -163,11 +167,15 @@ function Main() {
         {secsion === "mypage" && <Mypage />}
 
         {/*====== after search page ======*/}
-        {secsion === "search" && <Search nftsInfo={nftsInfo} />}
+
+        {secsion === "search" && (
+          <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
+        )}
       </secsion>
 
+
       {/*====== footer ======*/}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
