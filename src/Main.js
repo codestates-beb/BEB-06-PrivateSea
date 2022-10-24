@@ -139,7 +139,7 @@ function Main() {
         handleSearch={handleSearch}
         handleTarget={handleTarget}
       />
-      <secsion className="section">
+      <div className="section">
         {/*  ====== main page ======*/}
         {secsion === "main" && (
           <div>
@@ -167,13 +167,15 @@ function Main() {
         {secsion === "mypage" && <Mypage />}
 
         {/*====== after search page ======*/}
+
         {secsion === "search" && (
           <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
         )}
       </secsion>
 
+
       {/*====== footer ======*/}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
