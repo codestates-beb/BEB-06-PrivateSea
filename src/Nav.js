@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Nav(props) {
   return (
@@ -12,7 +13,9 @@ function Nav(props) {
         type="text"
         placeholder="Search items, collections, and accounts"
       ></input>
-      <div className="nav_button">search</div>
+      <div className="nav_button" value="search" onClick={props.handleSearch}>
+        search
+      </div>
 
       <div
         className="nav_button"
