@@ -11,23 +11,23 @@ function Footer() {
   return (
     <div className="footer-content">
       <footer className="footer">
-        <h3>Foolish Developer</h3>
+        {/* <h3>Foolish Developer</h3>
 
         <p>Join the community</p>
         <i>
-          <FontAwesomeIcon icon={faHouseUser} size="2px" />
+          <FontAwesomeIcon icon={faHouseUser}  />
         </i>
         <i>
-          <FontAwesomeIcon icon={faSquareFacebook} size="2px" />
+          <FontAwesomeIcon icon={faSquareFacebook} />
         </i>
         <i>
-          <FontAwesomeIcon icon={faSquareGithub} size="2px" />
+          <FontAwesomeIcon icon={faSquareGithub}  />
         </i>
         <p>
           The world’s first and largest digital marketplace for crypto
           collectibles and non-fungible tokens (NFTs). Buy, sell, and discover
           exclusive digital items.
-        </p>
+        </p> */}
       </footer>
     </div>
   );

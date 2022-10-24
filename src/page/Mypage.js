@@ -49,7 +49,7 @@ function Mypage() {
             <button> sell </button>
         </div>
 
-        {detail && <Detail />}
+        {/* {props.detail && <Detail />} */}
 
         </div>
     );
