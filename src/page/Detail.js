@@ -1,49 +1,27 @@
 import React from "react";
-import Nav from "../Nav";
 
-//
-
-// NFT 하나 누르면 나오는 상세 페이지
-
-// async function handleSearch(e) {
-//     setSearchValue(e.target.value);
-//     await axios
-//       .get(`http://localhost:8080/nft/${searchValue}`) <- params 문법
-//       .then((result) => {
-//         //axios({method:get , url:'/nft/${search}'})
-//         console.log(result.data);
-//       });
-//   }
-
-/**
-const function 미술(props){
-    return(
-        <div> {props.art} </div>
-        <h4> 이름 </h4>
-        <p> 작가 </p>
-        <p> 가격 </p>
-        <button> Buy </button>
-
-    )
+//props.allNfts 애들을 filter 처리로 _id 가  clickedNft 인 애들만 남게하고 map 처리
+//owner, name, price, url, buy
+function Detail(props) {
+  const id = props.clickedNft;
+  return (
+    <div>
+      detail page
+      {props.allNftsforDetail
+        .filter((a) => a._id == id)
+        .map((i, a) => {
+          return (
+            <div key={a}>
+              <img src={i.url} />
+              <p>{i.owner}</p>
+              <p>{i.name}</p>
+              <p>{i.price}</p>
+              <button onClick={props.handleBuy}>buy</button>
+            </div>
+          );
+        })}
+    </div>
+  );
 }
-
-
- */
-
-function Detail() {
-  //   const [detailNft, setDetailNft] = useState();
-
-  return <div>Trade Page</div>;
-}
-
-/**
-    반복되는 사항 
-     - nft 프로필 사진
-     - nft 이름
-     - nft 가격
-     - price history 
-    
-    props 로 상위 컴포넌트 Explore에서 art, sport, photo
-     */
 
 export default Detail;

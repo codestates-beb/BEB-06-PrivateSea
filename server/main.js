@@ -3,15 +3,16 @@ const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
+const cors = require('cors');
+app.use(cors());
 require('dotenv').config();
-app.use('/public', express.static('public'))
 
 let db;
-MongoClient.connect(process.env.DATABASE_URL, function(err, client){
+MongoClient.connect(process.env.DATABASE_URL, { useUnifiedTopology: true }, function(err, client){
     if(err){
         return console.log(err)
     }
-    app.get('/', function(req, res){
+    app.get('/nft', function(req, res){
         db = client.db('project1');
         console.log(req.query.value)
         const searchCon = [
