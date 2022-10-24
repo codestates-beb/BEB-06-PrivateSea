@@ -32,8 +32,10 @@ function Mypage() {
 
     // 2. nft 중 필요한 내용(name, price)만 보여준다. -> 해야될 부분, 코딩 맞는지 모르겠음 
     myNft.filter((data) => {
-        data.name;
-        data.price;
+        return(
+        data.name,
+        data.price
+        )
     })
 
     return (
