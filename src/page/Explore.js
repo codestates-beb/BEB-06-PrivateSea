@@ -30,11 +30,12 @@ function Explore(props) {
     //theme 별로 요청 ....
     //모든 nft 가져와서 여기서 filter 하기에는 느려질 것 같다는 생각 함.
     // nft/:theme
+    //theme 보내면 안옴
     axios
       .get(`http://localhost:8080/nft/${props.theme}`)
       .then((result) => {
         const nfts = [];
-        const data = result.data;
+        const data = result.data.result;
         console.log(data);
         for (let i = 0; i < data.length; i++) {
           nfts.push(data[i]);
@@ -50,9 +51,10 @@ function Explore(props) {
 
   //imgage 클릭시, nft detail page로 이동
   function handleImageClick(e) {
-    const id = e.currentTarget.getAttribute("value").toString();
+    const id = e.currentTarget.getAttribute("value");
     setClickedNft(id);
     props.handleDetail(true);
+    console.log(id);
   }
 
   return (
@@ -88,7 +90,7 @@ function Explore(props) {
                   <img
                     alt="nft"
                     src={a.url}
-                    value={a._id}
+                    value={a.tokenid}
                     onClick={handleImageClick}
                   ></img>
 
@@ -107,7 +109,7 @@ function Explore(props) {
                   <img
                     alt="Theme nft"
                     src={nft.url}
-                    value={nft._id}
+                    value={nft.tokenid}
                     onClick={handleImageClick}
                   ></img>
                   <div>{nft.name}</div>
