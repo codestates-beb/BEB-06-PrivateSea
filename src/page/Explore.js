@@ -1,10 +1,6 @@
 import axios from "axios";
-<<<<<<< HEAD
-import { React, useState, useEffect } from "react";
-=======
 import { React, useState } from "react";
 import Detail from "./Detail";
->>>>>>> e3846fa5e733fb36d4186a4afd004ba496e2deaa
 
 function Explore(props) {
   //theme 별 nft와 그 정보들이 nftInfo에 저장.
