@@ -35,7 +35,7 @@ function Mypage() {
 
 
     async function onLoadData() {
-        await axios.get('https://testnets-api.opensea.io/api/v1/assets?owner=0xEcd5c913FC8B656dbfe0f2d902E1b0902de025aA&order_direction=desc&offset=0&limit=20&include_orders=false%27)
+        await axios.get('https://testnets-api.opensea.io/api/v1/assets?owner=0xEcd5c913FC8B656dbfe0f2d902E1b0902de025aA&order_direction=desc&offset=0&limit=20&include_orders=false%27')
             .then((response)  => {
             let data = response.data.assets;
             setData(data);
