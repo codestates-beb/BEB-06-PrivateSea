@@ -90,8 +90,6 @@ function Create(){
 
     const MINTING = await ERC721Contract.methods.safeMint(accounts[0],metaDataUrl).send(transaction); // safe 민트 실행 
 
-    console.log(MINTING);
-
   }
 
 

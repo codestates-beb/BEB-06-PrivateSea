@@ -49,22 +49,27 @@ function Explore(props) {
   }
 
   return (
+    
     <div>
-      <div className="slider_text" >Explore nfts</div>
-      <div className="explore_menu" >
-        <div className={"explore_menu_text" + ( props.theme == "trending" ? " on" : "" ) }  onClick={getThemeNft} value="trending">
-          trending
+      {!props.detail && 
+        <div>
+          <div className="slider_text" >Explore nfts</div>
+          <div className="explore_menu" >
+            <div className={"explore_menu_text" + ( props.theme == "trending" ? " on" : "" ) }  onClick={getThemeNft} value="trending">
+              trending
+            </div>
+            <div className={"explore_menu_text" + ( props.theme == "art" ? " on" : "" ) }  onClick={getThemeNft} value="art">
+              art
+            </div>
+            <div className={"explore_menu_text" + ( props.theme == "sport" ? " on" : "" ) }  onClick={getThemeNft} value="sport">
+              sport
+            </div>
+            <div className={"explore_menu_text" + ( props.theme == "photography" ? " on" : "" ) }  onClick={getThemeNft} value="photography">
+              photography
+            </div>
+          </div>
         </div>
-        <div className={"explore_menu_text" + ( props.theme == "art" ? " on" : "" ) }  onClick={getThemeNft} value="art">
-          art
-        </div>
-        <div className={"explore_menu_text" + ( props.theme == "sport" ? " on" : "" ) }  onClick={getThemeNft} value="sport">
-          sport
-        </div>
-        <div className={"explore_menu_text" + ( props.theme == "photography" ? " on" : "" ) }  onClick={getThemeNft} value="photography">
-          photography
-        </div>
-      </div>
+      }
 
       {/* 사진을 안눌렀으면 그냥 모든 nft list
      사진 눌렀으면 detail component로
