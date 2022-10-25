@@ -75,7 +75,7 @@ function Explore(props) {
           onClick={getThemeNft}
           value="sports"
         >
-          sport
+          sports
         </div>
         <div
           className={
