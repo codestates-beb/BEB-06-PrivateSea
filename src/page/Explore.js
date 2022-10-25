@@ -81,27 +81,29 @@ function Explore(props) {
           <div>
             {props.allNfts.map((a) => {
               return (
-                <div className="explore_img_box" >
-                  <div className="overflow_box" >
-                      <img
+                <div className="explore_img_box">
+                  <div className="overflow_box">
+                    <img
                       className="explore_img"
-                        alt="nft"
-                        src={a.url}
-                        value={a.tokenid}
-                        onClick={handleImageClick}
-                      ></img>
-                    </div>
-                    <div className="preview_box" >
-                      <img className="explore_img_preview"
-                        alt="nft"
-                        src={a.url}
-                      ></img>
-                    </div>
-                  
-                    {/* <div>{a.price}</div> */}
-                    <div className="explore_button" onClick={props.handleBuy}>buy</div>
-                    <div className="explore_text" >{a.name}</div>
-                  
+                      alt="nft"
+                      src={a.url}
+                      value={a.tokenid}
+                      onClick={handleImageClick}
+                    ></img>
+                  </div>
+                  <div className="preview_box">
+                    <img
+                      className="explore_img_preview"
+                      alt="nft"
+                      src={a.url}
+                    ></img>
+                  </div>
+
+                  {/* <div>{a.price}</div> */}
+                  <div className="explore_button" onClick={props.handleBuy}>
+                    buy
+                  </div>
+                  <div className="explore_text">{a.name}</div>
                 </div>
               );
             })}
@@ -112,26 +114,29 @@ function Explore(props) {
               .filter((a) => a.theme == props.theme)
               .map((nft) => {
                 return (
-                  <div  className="explore_img_box" >
-                      <div className="overflow_box" >
-                    <img
-                      className="explore_img"
-                      alt="Theme nft"
-                      src={nft.url}
-                      value={nft.tokenid}
-                      onClick={handleImageClick}
-                    ></img>
+                  <div className="explore_img_box">
+                    <div className="overflow_box">
+                      <img
+                        className="explore_img"
+                        alt="Theme nft"
+                        src={nft.url}
+                        value={nft.tokenid}
+                        onClick={handleImageClick}
+                      ></img>
                     </div>
-                    <div className="preview_box" >
-                      <img className="explore_img_preview"
+                    <div className="preview_box">
+                      <img
+                        className="explore_img_preview"
                         alt="nft"
                         src={nft.url}
                       ></img>
                     </div>
-                
+
                     {/* <div>{nft.price}</div> */}
-                    <div className="explore_button" onClick={props.handleBuy}>buy</div>
-                    <div className="explore_text" >{nft.name}</div>
+                    <div className="explore_button" onClick={props.handleBuy}>
+                      buy
+                    </div>
+                    <div className="explore_text">{nft.name}</div>
                   </div>
                 );
               })}
