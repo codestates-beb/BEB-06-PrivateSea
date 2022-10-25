@@ -130,6 +130,7 @@ function Main() {
   return (
     <div>
       {/*====== nav bar ======*/}
+
       <Nav
         value={searchValue}
         onChange={handleSearch}
@@ -139,6 +140,7 @@ function Main() {
         handleSearch={handleSearch}
         handleTarget={handleTarget}
       />
+      
       <div className="section">
         {/*  ====== main page ======*/}
         {secsion === "main" && (
@@ -171,8 +173,8 @@ function Main() {
         {secsion === "search" && (
           <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
         )}
-      </secsion>
 
+      </div> 
 
       {/*====== footer ======*/}
       {/* <Footer /> */}
