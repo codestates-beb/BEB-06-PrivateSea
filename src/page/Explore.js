@@ -49,6 +49,7 @@ function Explore(props) {
   }
 
   return (
+    
     <div>
       <div className="slider_text"></div>
       <div className="explore_menu">

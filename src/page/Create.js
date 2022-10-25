@@ -105,6 +105,7 @@ function Create(props) {
         console.log(tokenid);
       }); // safe 민트 실행
 
+
     console.log(MINTING);
   };
 
@@ -130,54 +131,34 @@ function Create(props) {
       });
   };
 
-  return (
-    <div>
-      <div className="main_text"> Create New Item</div>
-      <div className="create_main">
-        <div className="imageFile">
-          <label className="file_box" htmlFor="ex_file">
-            <div className="file_label_div"></div>
-          </label>
-          <input
-            type="file"
-            id="ex_file"
-            name="image"
-            onChange={uploadImage}
-            style={{ display: "none" }}
-          />
-          <img className={"uploadImage" + (imageView ? " on" : "")} />
-        </div>
-        <div className="input_name">Name</div>
-        <input
-          className="create_input"
-          onChange={onChangeName}
-          type="text"
-          placeholder="NFT Name"
-        />
-        <div className="input_name">Price</div>
-        <input
-          className="create_input"
-          onChange={onChangePrice}
-          type="text"
-          placeholder="Price"
-        />
-        <div className="input_name">theme</div>
-        <input
-          className="create_input"
-          onChange={onChangeTheme}
-          placeholder="art, sports, photography"
-        ></input>
-        <div className="input_name">Description</div>
-        <textarea
-          className="description"
-          onChange={onChangeDesc}
-          placeholder="Description"
-        />
 
-        {/* <div></div>
-        {theme.map((value, key) => {
-          <div key={key}>{value}</div>;
-        })} */}
+
+    return (
+      <div>
+        <div className="main_text" > Create New Item</div>      
+        <div className="create_main" >
+          <div className="imageFile">
+            <label className="file_box"  htmlFor="ex_file">
+              <div className="file_label_div" ></div>
+            </label> 
+            <input type="file"  id="ex_file" onChange={uploadImage} name="image"  style={{ display: "none" }} />
+              <img className={"uploadImage" +(imageView ?  " on" : "" )}   />
+          </div>
+          <div className="input_name" >Name</div>
+          <input className="create_input" onChange={onChangeName}   type="text" placeholder="NFT Name"   />
+          <div className="input_name">Price</div>
+          <input className="create_input" onChange={onChangePrice}    type="text" placeholder="Price"  />
+          <div className="input_name">Collection</div>
+          <div className="create_input"></div>
+          <div className="input_name">Description</div>
+          <textarea className="description" onChange={onChangeDesc}  placeholder="Description"  /> 
+
+//           <div></div>
+//           {theme.map((value,key) => {
+//               <div key ={key} >{value}</div>
+//             })
+//           }
+
 
         {/* 생성 및 초기화 버튼
           create 제출 -> nft 생성 및 db post 요청 */}
@@ -191,10 +172,10 @@ function Create(props) {
           {" "}
           Create{" "}
         </button>
-        <button className="create_button" onClick={afterMinting}>
-          {" "}
-          Test{" "}
-        </button>
+//         <button className="create_button" onClick={afterMinting}>
+//           {" "}
+//           Test{" "}
+//         </button>
       </div>
     </div>
   );

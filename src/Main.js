@@ -8,6 +8,7 @@ import Explore from "./page/Explore";
 import Mypage from "./page/Mypage";
 import Create from "./page/Create";
 import Search from "./page/Search";
+import Footer from "./page/Footer";
 
 function Main() {
   const [web3, setWeb3] = useState();
@@ -165,7 +166,11 @@ function Main() {
           <div>
             <div className="slider_text"></div>
             <Slider allNfts={allNfts} />
+
+            <Footer /> 
           </div>
+               
+     
         )}
 
         {/*====== explore page ======*/}
@@ -193,8 +198,10 @@ function Main() {
         )}
       </div>
 
+
       {/*====== footer ======*/}
       {/* <Footer /> */}
+
     </div>
   );
 }

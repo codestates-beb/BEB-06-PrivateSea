@@ -5,18 +5,25 @@ import React from "react";
 function Detail(props) {
   const id = props.clickedNft;
   return (
-    <div>
-      detail page
+    <div className="detail_page" >
       {props.allNftsforDetail
         .filter((a) => a.tokenid == id)
         .map((i, a) => {
           return (
             <div key={a}>
-              <img src={i.url} />
-              <p>{i.owner}</p>
-              <p>{i.name}</p>
-              <p>{i.price}</p>
-              <button onClick={props.handleBuy}>buy</button>
+              <img  className="detail_img"  src={i.url} />
+              <div className="detail_text_box" >
+                <div className="detail_name" >{i.name}</div>
+                <div className="detail_d" >
+                  <div className="detail_d_text" >Sale ends November 24, 2022 at 11:11pm GMT+9 </div>
+                  <div className="current_price" > Current price</div>
+                  <div className="detail_price" >{i.price}</div>
+                  <button className="detail_button"  onClick={props.handleBuy}>buy</button>
+                </div>
+
+                <div className="owned" >Owned by : {i.owner}</div>
+              </div>
+            
             </div>
           );
         })}
