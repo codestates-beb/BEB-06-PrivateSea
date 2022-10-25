@@ -48,7 +48,7 @@ MongoClient.connect(
       );
     });
 
-    app.post("/nft/image", upload.single("image"), function (req, res, next) {
+    app.post("/nft/create", upload.single("image"), function (req, res, next) {
       console.log(req.file);
       console.log(req.body);
       db = client.db("project1");
@@ -58,7 +58,8 @@ MongoClient.connect(
         theme: req.body.theme,
         tokenid: req.body.tokenid,
         price: req.body.price,
-        url: req.file.filename,
+        description: req.body.description,
+        url: req.body.url,
         originalname: req.file.originalname,
       };
       db.collection("img_table").insertOne(uploaded, function (err, result) {
@@ -90,6 +91,8 @@ MongoClient.connect(
           res.json({ result: result });
         });
     });
+
+    // app.use(express.static('image'));
 
     app.use(express.static(path.join(__dirname, "../build")));
 
