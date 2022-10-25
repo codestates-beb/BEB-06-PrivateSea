@@ -35,11 +35,11 @@ function Create(){
   const [contractAddress , seta] = useState("0x2b8Dbdfe2D8A73d72b2BED2E27F519c52eE6Fa39");
 
   const uploadImage = (e) => {
-   let file = e.target.files[0];
-   const file_url = URL.createObjectURL(file);
-   document.querySelector(".uploadImage").src = file_url;
-   setImgFile(file);
-   setImage(true);
+    let file = e.target.files[0];
+    const file_url = URL.createObjectURL(file);
+    document.querySelector(".uploadImage").src = file_url;
+    setImgFile(file);
+    setImage(true);
   }
 
   const onChangeName = (e) => {
