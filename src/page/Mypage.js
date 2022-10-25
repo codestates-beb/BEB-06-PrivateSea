@@ -4,7 +4,6 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import Detail from "./Detail";
 import Web3 from "web3";
-import { response } from "express";
 
 function Mypage() {
   const [web3, setWeb3] = useState();
