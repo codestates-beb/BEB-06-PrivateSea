@@ -8,7 +8,6 @@ import Explore from "./page/Explore";
 import Mypage from "./page/Mypage";
 import Create from "./page/Create";
 import Search from "./page/Search";
-import Footer from "./page/Footer";
 
 function Main() {
   const [secsion, setSecsion] = useState("main");
@@ -144,7 +143,7 @@ function Main() {
         {secsion === "main" && (
           <div>
             <h1>Explore, collect, and sell NFTs</h1>
-            <Slider allNfts={allNfts} /> Todo
+            <Slider allNfts={allNfts} />
           </div>
         )}
 
@@ -171,8 +170,7 @@ function Main() {
         {secsion === "search" && (
           <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
         )}
-      </secsion>
-
+      </div>
 
       {/*====== footer ======*/}
       {/* <Footer /> */}
