@@ -17,33 +17,254 @@ code {
   width: 1000%;
 }
 
+
+
+
+
+
+/***************** Nav *********************/
+
+.nav_bar{
+  width: 1802px;
+  margin: 0 auto;
+}
+
+.search_box {
+  width: 100%;
+  height: 72px;
+  background-color: black;
+  color:white;
+}
+
+.nav_logo {
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  display: inline-block;
+  margin: 10px 30px 0 18px;
+  cursor: pointer;
+}
+
 .search_bar {
   width: 1000px;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 7px;
   text-indent: 10px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
 }
 
 .nav_button {
   display: inline-block;
   width: 100px;
   height: 30px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid #ccc;
   text-align: center;
   line-height: 30px;
   margin: 0 15px;
+  vertical-align: top;
+  margin-top: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.search_box {
-  width: 1700px;
-  border: 2px solid #91aff1;
-  padding: 20px;
-  margin-top: 10px;
-  margin-left: 74px;
-  border-radius: 8px;
+.nav_button.wallet {
+  background-color: white;
+  border: 2px solid white;
 }
+
+.nav_button:hover {
+  background-color: white;
+  color:black;
+}
+
+
+.nav_button.wallet.on {
+  box-shadow: rgb(16 227 194) 0px 0px 20px;
+  background-color: #ffdffb;
+  border: 2px solid #ffdffb;
+}
+
+
+.search_button {
+  background-image: url(/src/images/search.png);
+  width: 24px;
+  height: 24px;
+  background-size: 24px 24px;
+    display: inline-block;
+    position: relative;
+    left: -37px;
+    cursor: pointer;
+}
+
+/*******************************************/
+
+.background_img {
+  height: 250px;
+  width: 100%; 
+}
+
+.background_text {
+  color: #10E3C2;
+  padding: 0 1rem;
+  font-size: clamp(1.8rem, 4vw + 1.8rem, 5.25rem);
+  background: linear-gradient(90deg, #00F9BC, #00DAFC);
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  top: 52px;
+  left: calc( 50% - 381px );
+}
+
+/***************** explore_menu.css *********************/
+
+.explore_menu {
+  margin: 0 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+.explore_menu_text {
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.explore_img_preview {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.explore_menu_text:hover{
+  box-shadow: 0 0 3px #c1b8b8;
+  border-width: 1px 1px 0 1px;
+  border-radius: 12px 12px 0 0;
+}
+
+.explore_menu_text.on {
+  font-weight: 600;
+  border: 2px solid;
+  border-width: 0 0 2px 0;
+}
+
+.explore_img_box {
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 8px;
+  transition: box-shadow 0.25s ease-in-out 0s;
+  width: 425px;
+  height: 329px;
+  overflow: hidden;
+  display: inline-block;
+  margin: 20px;
+}
+
+.explore_img_box:hover .explore_img {
+  transform: scale(1.08);
+  transition-duration: 0.4s;
+}
+
+.explore_img_box:hover {
+  box-shadow: rgb(0 0 0 / 50%) 0px 4px 8px;
+}
+
+.overflow_box {
+  overflow: hidden;
+}
+
+.explore_img {
+  width: 425px;
+  height: 239px;
+}
+
+ .explore_text {
+  display: inline-block;
+  font-weight: 600;
+  vertical-align: top;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.explore_button {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #dfdff8;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #cbc3c3;
+  font-size: 16px;
+  box-shadow: 0 0 3px #ccc;
+  float: right;
+  margin-top: 19px;
+  margin-right: 20px;
+}
+
+.preview_box {
+  width: 78px;
+  height: 78px;
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: rgb(0 0 0 / 8%) 0px 5px 10px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: inline-block;
+  top: -35px;
+  right: -10px;
+}
+
+/*****************  *********************/
+
+/***************** slider.css *********************/
+.slider_text {
+  font-size: 60px;
+  text-align: center;
+  margin: 30px 0;
+  font-weight: 600;
+}
+
+#main-slider-container {
+  margin: 0 auto;
+}
+
+.slider-icon.left {
+  left: -50px !important;
+}
+
+.slider-icon.right {
+  right: -50px !important;
+}
+
+.slider-card-image:hover {
+  transform: scale(1.08);
+  transition-duration: 0.4s;
+}
+
+.slider-card {
+  overflow: hidden;
+}
+
+
+/*******************************************/
 
 /***************** create.css *********************/
 

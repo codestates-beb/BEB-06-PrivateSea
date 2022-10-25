@@ -36,26 +36,16 @@ function Mypage() {
 
 
     async function onLoadData() {
-        const options = {
-            method: 'GET',
-            url: 'https://testnets-api.opensea.io/api/v1/assets',
-            params: {
-                owner: `${account}`,
-                order_direction: 'desc',
-                offset: '0',
-                limit: '20',
-                include_orders: 'false'
-                }
-            };
-            
-            axios
-                .request(options)
-                .then(function (response) {
-                console.log(response.data);
-                })
-                .catch(function (error) {
-                console.error(error);
-                });
+
+
+        await axios.get('https://testnets-api.opensea.io/api/v1/assets?owner=0xEcd5c913FC8B656dbfe0f2d902E1b0902de025aA&order_direction=desc&offset=0&limit=20&include_orders=false%27')
+            .then((response)  => {
+            let data = response.data.assets;
+            setData(data);
+            console.log(data);
+            })
+            .catch(err => console.error(err))
+
         };
 
         const collection = await fetch(
