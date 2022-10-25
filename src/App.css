@@ -12,6 +12,15 @@ h1 {
   text-align: center;
 }
 
+div{display : block};
+
+.searchBox{
+  padding:0px 0px 16px;
+}
+
+.searchNft{
+  
+}
 
 .footer-content{
   display: flex;

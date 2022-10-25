@@ -8,13 +8,14 @@ import Explore from "./page/Explore";
 import Mypage from "./page/Mypage";
 import Create from "./page/Create";
 import Search from "./page/Search";
-import Footer from "./page/Footer";
 
 function Main() {
-  const [secsion, setSecsion] = useState("main");
-  const [searchValue, setSearchValue] = useState(undefined);
   const [web3, setWeb3] = useState();
   const [account, setAccount] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
+
+  const [secsion, setSecsion] = useState("main");
+  const [searchValue, setSearchValue] = useState(undefined);
   const [nftsInfo, setNftsInfo] = useState(undefined); //[{name,url,owner,theme,price,tokenid},{},{}]
   const [theme, setTheme] = useState(undefined);
   const [detail, setDetail] = useState(false);
@@ -36,12 +37,19 @@ function Main() {
       price: "10ETH",
     },
   ]);
+
   const connectWallet = async () => {
     let accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
     setAccount(accounts[0]);
+    setIsConnected(true); 
   };
+
+  const onLogout = () => {
+    setIsConnected(false);
+    setWeb3(null);
+  }
 
   function handleDetail(status) {
     setDetail(status);
@@ -130,6 +138,7 @@ function Main() {
   return (
     <div>
       {/*====== nav bar ======*/}
+
       <Nav
         value={searchValue}
         onChange={handleSearch}
@@ -138,13 +147,22 @@ function Main() {
         handlePageChange={handlePageChange}
         handleSearch={handleSearch}
         handleTarget={handleTarget}
+        isConnected={isConnected}
+        onLogout={onLogout}
       />
-      <secsion className="section">
+
+      <div style={{ position : "relative" }} >
+        <img className="background_img"  src="https://www.niftygateway.com/static/media/default-banner-bg.d9e5b4c4.jpg" />
+        <div className="background_text" >BEB-06-PrivateSea</div> 
+      </div>
+
+      
+      <div className="section">
         {/*  ====== main page ======*/}
         {secsion === "main" && (
           <div>
-            <h1>Explore, collect, and sell NFTs</h1>
-            <Slider allNfts={allNfts} /> Todo
+            <div className="slider_text" >Explore, collect, and sell NFTs</div>
+            <Slider allNfts={allNfts} />
           </div>
         )}
 
@@ -167,13 +185,17 @@ function Main() {
         {secsion === "mypage" && <Mypage />}
 
         {/*====== after search page ======*/}
+
         {secsion === "search" && (
           <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
         )}
-      </secsion>
+
+
+      </div>
+
 
       {/*====== footer ======*/}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
