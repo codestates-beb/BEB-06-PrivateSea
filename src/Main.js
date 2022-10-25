@@ -43,13 +43,13 @@ function Main() {
       method: "eth_requestAccounts",
     });
     setAccount(accounts[0]);
-    setIsConnected(true); 
+    setIsConnected(true);
   };
 
   const onLogout = () => {
     setIsConnected(false);
     setWeb3(null);
-  }
+  };
 
   function handleDetail(status) {
     setDetail(status);
@@ -151,17 +151,19 @@ function Main() {
         onLogout={onLogout}
       />
 
-      <div style={{ position : "relative" }} >
-        <img className="background_img"  src="https://www.niftygateway.com/static/media/default-banner-bg.d9e5b4c4.jpg" />
-        <div className="background_text" >BEB-06-PrivateSea</div> 
+      <div style={{ position: "relative" }}>
+        <img
+          className="background_img"
+          src="https://www.niftygateway.com/static/media/default-banner-bg.d9e5b4c4.jpg"
+        />
+        <div className="background_text">Explore, collect, and sell NFTs</div>
       </div>
 
-      
       <div className="section">
         {/*  ====== main page ======*/}
         {secsion === "main" && (
           <div>
-            <div className="slider_text" >Explore, collect, and sell NFTs</div>
+            <div className="slider_text"></div>
             <Slider allNfts={allNfts} />
           </div>
         )}
@@ -179,7 +181,7 @@ function Main() {
         )}
 
         {/*====== create page ======*/}
-        {secsion === "create" && <Create />}
+        {secsion === "create" && <Create account={account} />}
 
         {/*====== mypage page ======*/}
         {secsion === "mypage" && <Mypage />}
@@ -189,10 +191,7 @@ function Main() {
         {secsion === "search" && (
           <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
         )}
-
-
       </div>
-
 
       {/*====== footer ======*/}
       {/* <Footer /> */}

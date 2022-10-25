@@ -109,6 +109,7 @@ code {
 .background_img {
   height: 250px;
   width: 100%; 
+  margin-bottom: 70px;
 }
 
 .background_text {
@@ -124,7 +125,7 @@ code {
   -webkit-text-fill-color: transparent;
   position: absolute;
   top: 52px;
-  left: calc( 50% - 381px );
+  left: calc( 38% - 381px );
 }
 
 /***************** explore_menu.css *********************/
@@ -236,9 +237,10 @@ code {
 
 /***************** slider.css *********************/
 .slider_text {
-  font-size: 60px;
-  text-align: center;
-  margin: 30px 0;
+  font-size: 50px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: left;
+  margin: 30px 0 0 20px;
   font-weight: 600;
 }
 

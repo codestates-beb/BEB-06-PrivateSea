@@ -50,7 +50,7 @@ function Explore(props) {
 
   return (
     <div>
-      <div className="slider_text">Explore nfts</div>
+      <div className="slider_text"></div>
       <div className="explore_menu">
         <div
           className={
