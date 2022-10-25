@@ -60,9 +60,9 @@ function Explore(props) {
           {" "}
           art{" "}
         </button>
-        <button onClick={getThemeNft} value="sport">
+        <button onClick={getThemeNft} value="sports">
           {" "}
-          sport{" "}
+          sports{" "}
         </button>
         <button onClick={getThemeNft} value="photography">
           {" "}

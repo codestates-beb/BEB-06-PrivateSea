@@ -5,57 +5,72 @@ import axios from "axios";
 import Detail from "./Detail";
 import Web3 from "web3";
 
-
 function Mypage() {
+  const [web3, setWeb3] = useState();
+  const [account, setAccount] = useState("");
 
-    const [web3, setWeb3] = useState();
-    const [account, setAccount] = useState('');
-
-    useEffect(() => { // 컴포넌트가 처음 마운트 되었을 때, web3 객체에 연결 
-        if (typeof window.ethereum !== "undefined") { // window.ethereum이 있다면
-            try {
-                const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
-                setWeb3(web);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-    }, []);
-
-    const connectWallect = async () => {
-        account = await window.ethereum.request({ // 메타마스크 연결된 계정 정보를 받는 JSON_RPC call API
-            method: "eth_requestAccounts",
-        });
-
-        setAccount(account[0]);
+  useEffect(() => {
+    // 컴포넌트가 처음 마운트 되었을 때, web3 객체에 연결
+    if (typeof window.ethereum !== "undefined") {
+      // window.ethereum이 있다면
+      try {
+        const web = new Web3(window.ethereum); // 새로운 web3 객체를 만든다
+        setWeb3(web);
+      } catch (err) {
+        console.log(err);
+      }
     }
+  }, []);
 
-    const [data , setData] = useState([]);
+  const connectWallect = async () => {
+    let account = await window.ethereum.request({
+      // 메타마스크 연결된 계정 정보를 받는 JSON_RPC call API
+      method: "eth_requestAccounts",
+    });
 
+    setAccount(account[0]);
+  };
 
+  const [data, setData] = useState([]);
 
-    async function onLoadData() {
-        await axios.get('https://testnets-api.opensea.io/api/v1/assets?owner=0xEcd5c913FC8B656dbfe0f2d902E1b0902de025aA&order_direction=desc&offset=0&limit=20&include_orders=false%27)
-            .then((response)  => {
-            let data = response.data.assets;
-            setData(data);
-            console.log(data);
-            })
-            .catch(err => console.error(err))
-        };
+  function onLoadData() {
+    const options = {
+      method: "GET",
+      url: "https://testnets-api.opensea.io/api/v1/assets",
+      params: {
+        owner: `${account}`,
+        order_direction: "desc",
+        offset: "0",
+        limit: "20",
+        include_orders: "false",
+      },
+    };
 
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
 
-    return (
-        <div>
-            <div className="main_text" > My page </div>      
-                <button className="metaConnect" 
-                onClick={() => {
-                    connectWallect();
-                    }}
-                > connect To MetamMask 
-                </button>        
-        </div>
-    );
+  return (
+    <div>
+      <div className="main_text"> My page </div>
+      <button onClick={onLoadData}>data</button>
+      <button
+        className="metaConnect"
+        onClick={() => {
+          connectWallect();
+        }}
+      >
+        {" "}
+        connect To MetamMask
+      </button>
+    </div>
+  );
 }
 
 export default Mypage;
