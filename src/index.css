@@ -260,7 +260,7 @@ code {
   right: -50px !important;
 }
 
-.slider-card-image:hover {
+.slider-card:hover .slider-card-image {
   transform: scale(1.08);
   transition-duration: 0.4s;
 }
@@ -269,6 +269,11 @@ code {
   overflow: hidden;
 }
 
+.slider-card:hover {
+  box-shadow: 0 4px 1rem -2px #999;
+  transform: translateY(-3px);
+  transition-duration: 0.4s;
+}
 
 /*******************************************/
 
@@ -497,4 +502,119 @@ code {
   margin-left: 30px;
   font-size: 20px;
   font-weight: 600;
+}
+
+
+
+
+.slider-card {
+  height: 300px;
+  background: white;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 12%);
+  cursor: pointer;
+}
+
+.slider-card-image {
+  width: 100%;
+  height: 220px;
+  background-color: rgb(240 240 240 / 80%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.slick-slide {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+.silder_box {
+  margin: 0 auto;
+  width: 1500px;
+}
+
+
+.left_arrow {
+  background-image: url(/src/images/left_arrow.png);
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: -40px;
+  top: 130px;
+  z-index: 100000000;
+  animation: box-ani 1s infinite;
+}
+
+.right_arrow {
+  background-image: url(/src/images/right_arrow.png);
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  right: -40px;
+  top: 130px;
+  z-index: 100000000;
+  animation: box-ani2 1s infinite;
+}
+
+@keyframes box-ani {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(5px, 0);
+	}
+}
+
+@keyframes box-ani2 {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(-5px, 0);
+	}
+}
+
+.sider_title {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 21px;
+}
+
+.footer_div {
+  width: 50%;
+  display: inline-block;
+  height: 50px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  height: 50px;
+  width: 100vw;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #fff;
+}
+
+.footer_h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 100px;
+  display: inline-block;
+}
+
+.footer_text {
+    margin-left: 80px;
+    display: inline-block;
+}
+
+.footer_icon {
+  margin-left: 15px;
 }
