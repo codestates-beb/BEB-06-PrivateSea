@@ -25,8 +25,8 @@ function Footer() {
           </i>
         </div>
 
-        <div className="footer_div" style={{ fontSize: "12px" , marginLeft: "200px" }}  >
-          <div>
+        <div className="footer_div" style={{ fontSize: "12px"}}  >
+          <div style={{  marginLeft: "200px" }}>
             <div>The world’s first and largest digital marketplace for crypto</div>
             <div>collectibles and non-fungible tokens (NFTs). Buy, sell, and discover</div>
             <div>exclusive digital items.</div>
