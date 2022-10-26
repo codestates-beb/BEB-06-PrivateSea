@@ -8,18 +8,26 @@ import Explore from "./page/Explore";
 import Mypage from "./page/Mypage";
 import Create from "./page/Create";
 import Search from "./page/Search";
+import Footer from "./page/Footer";
+import abi from "./abi/erc721abi.json";
+import DEALABI from "./abi/dealabi.json";
 
 function Main() {
   const [web3, setWeb3] = useState();
   const [account, setAccount] = useState("");
   const [isConnected, setIsConnected] = useState(false);
-
   const [secsion, setSecsion] = useState("main");
   const [searchValue, setSearchValue] = useState(undefined);
   const [nftsInfo, setNftsInfo] = useState(undefined); //[{name,url,owner,theme,price,tokenid},{},{}]
   const [theme, setTheme] = useState(undefined);
   const [detail, setDetail] = useState(false);
   const [searchTarget, setSearchTarget] = useState("");
+  const [contractAddress, seta] = useState(
+    "0x5b72fBc272367A453CFe3280e345eeE002F70b75"
+  );
+  const [contractAddress2, seta2] = useState(
+    "0x1775059754ca208da1C0962A4876134A476C4bb5"
+  );
   //dummy data
   const [allNfts, setAllNfts] = useState([
     {
@@ -38,18 +46,71 @@ function Main() {
     },
   ]);
 
+  const handleBuy = async (e) => {
+    let tokenid = e.currentTarget.attributes.value.value;
+    let price;
+    let owner;
+
+    for ( let i = 0; i < allNfts.length; i++ ) {
+      let one = allNfts[i];
+      if ( one._id == tokenid) {
+        price = String(one.price);
+        owner = one.owner;
+      }
+    }
+
+    const web3 = new Web3(window.ethereum);
+    const accounts = await web3.eth.getAccounts();
+    const currentBalance = await web3.eth.getBalance(accounts[0])
+
+    if(Number(currentBalance) < Number(web3.utils.toWei(price, "ether"))) { 
+      alert('NFT를 구매할 ETH가 부족합니다.')
+      return;
+    }
+
+    console.log(web3.utils.toWei(price, "ether"));
+    const contract = new web3.eth.Contract(DEALABI, contractAddress2);
+    await contract.methods.deal(owner, accounts[0], tokenid).send({ 
+      from: accounts[0],
+      gas: 200000,
+      gasPrice: web3.utils.toWei("1.5", "gwei"),
+      value:web3.utils.toWei(price, "ether")
+    });
+  }
+
+  const handleSell = async (e) => {
+
+    const nft = e.currentTarget.attributes.value.value;
+    const price = nft.price;
+    const tokenid = nft.id;
+
+    const web3 = new Web3(window.ethereum);
+    const accounts = await web3.eth.getAccounts();
+    const contract = new web3.eth.Contract(abi, contractAddress);
+
+    await contract.methods
+    .listing(tokenid, web3.utils.toWei(price, "ether")) // 0.01eth 
+    .send({
+      from: accounts[0],
+      gas: 200000,
+      gasPrice: web3.utils.toWei("1.5", "gwei"),
+    });
+
+
+  }
+
   const connectWallet = async () => {
     let accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
     setAccount(accounts[0]);
-    setIsConnected(true); 
+    setIsConnected(true);
   };
 
   const onLogout = () => {
     setIsConnected(false);
     setWeb3(null);
-  }
+  };
 
   function handleDetail(status) {
     setDetail(status);
@@ -129,11 +190,7 @@ function Main() {
     setTheme(change);
   }
 
-  function handleBuy() {
-    //Todo
-    //buy click 시 metamask 와 smartcontract 연결되어 구입.
-    return alert("Do you want to buy?");
-  }
+
 
   return (
     <div>
@@ -151,19 +208,25 @@ function Main() {
         onLogout={onLogout}
       />
 
-      <div style={{ position : "relative" }} >
-        <img className="background_img"  src="https://www.niftygateway.com/static/media/default-banner-bg.d9e5b4c4.jpg" />
-        <div className="background_text" >BEB-06-PrivateSea</div> 
+      <div style={{ position: "relative" }}>
+        <img
+          className="background_img"
+          src="https://www.niftygateway.com/static/media/default-banner-bg.d9e5b4c4.jpg"
+        />
+        <div className="background_text">Explore, collect, and sell NFTs</div>
       </div>
 
-      
       <div className="section">
         {/*  ====== main page ======*/}
         {secsion === "main" && (
           <div>
-            <div className="slider_text" >Explore, collect, and sell NFTs</div>
+            <div className="slider_text"></div>
             <Slider allNfts={allNfts} />
+
+            <Footer /> 
           </div>
+               
+     
         )}
 
         {/*====== explore page ======*/}
@@ -179,7 +242,7 @@ function Main() {
         )}
 
         {/*====== create page ======*/}
-        {secsion === "create" && <Create />}
+        {secsion === "create" && <Create account={account} />}
 
         {/*====== mypage page ======*/}
         {secsion === "mypage" && <Mypage />}
@@ -189,13 +252,12 @@ function Main() {
         {secsion === "search" && (
           <Search nftsInfo={nftsInfo} handleBuy={handleBuy} />
         )}
-
-
       </div>
 
 
       {/*====== footer ======*/}
       {/* <Footer /> */}
+
     </div>
   );
 }

@@ -5,14 +5,13 @@ function Search(props) {
   if (props.nftsInfo !== undefined) {
     return (
       <div className="searchBox">
-        <p>{props.nftsInfo.length} items</p>
+        <div className="search_length" >{props.nftsInfo.length} items</div>
         {props.nftsInfo.map((nft) => (
-          <div className="searchNft">
-            <h1>{nft.name}</h1>
-            <img src={nft.url} value={nft.tokenid} />
-            <p>{nft.name}</p>
-            <p>{nft.price}</p>
-            <button onClick={props.handleBuy}>buy</button>
+          <div className="explore_img_box search">
+            <div className="overflow_box"> <img className="explore_img" src={nft.url} value={nft.tokenid} /></div>
+            <div className="search_name" >{nft.name}</div>
+            <div className="search_price">{nft.price}</div>
+            <div  className="explore_button" value = {nft._id}  onClick={props.handleBuy}>buy</div>
           </div>
         ))}
       </div>
