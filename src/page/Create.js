@@ -36,11 +36,7 @@ function Create(props) {
   const [imgUrl, setImgUrl] = useState();
   const [tokenid, setTokenid] = useState(0);
   const [contractAddress, seta] = useState(
-<<<<<<< HEAD
-    "0x5b72fBc272367A453CFe3280e345eeE002F70b75"
-=======
     "0x395FFcA1B7CA2d98A06B89a750F0fB1626D6d4Ef"
->>>>>>> f23db996a1521a1b808b574421586367d0433844
   );
 
   const uploadImage = (e) => {
