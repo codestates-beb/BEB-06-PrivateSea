@@ -153,11 +153,11 @@ function Create(props) {
           <div className="input_name">Description</div>
           <textarea className="description" onChange={onChangeDesc}  placeholder="Description"  /> 
 
-//           <div></div>
+{/* //           <div></div>
 //           {theme.map((value,key) => {
 //               <div key ={key} >{value}</div>
 //             })
-//           }
+//           } */}
 
 
         {/* 생성 및 초기화 버튼
