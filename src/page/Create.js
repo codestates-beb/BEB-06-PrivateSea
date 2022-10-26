@@ -23,19 +23,20 @@ const client = create({
 });
 
 function Create(props) {
+  const selectList = ["art", "sports", "photography"];
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [imageView, setImage] = useState(false);
   const [price, setPrice] = useState();
   // const [tokenId, setTokenId] = useState();
   // const [theme, setTheme] = useState(["art", "sport", "photo"]);
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState("");
   const [account, setAccount] = useState();
   const [imgFile, setImgFile] = useState();
   const [imgUrl, setImgUrl] = useState();
-  const [tokenid, setTokenid] = useState();
+  const [tokenid, setTokenid] = useState(0);
   const [contractAddress, seta] = useState(
-    "0x2b8Dbdfe2D8A73d72b2BED2E27F519c52eE6Fa39"
+    "0x395FFcA1B7CA2d98A06B89a750F0fB1626D6d4Ef"
   );
 
   const uploadImage = (e) => {
@@ -85,7 +86,7 @@ function Create(props) {
 
     const transaction = {
       from: accounts[0],
-      gas: 190000,
+      gas: 5000000,
       gasPrice: web3.utils.toWei("1.5", "gwei"),
     };
     // 가스비 설정
@@ -94,19 +95,17 @@ function Create(props) {
     //contractAddress contract 돌아가는 주소
     const ERC721Contract = new web3.eth.Contract(abi, contractAddress);
 
-    const MINTING = await ERC721Contract.methods
-      .safeMint(accounts[0], metaDataUrl)
+    const Minting = await ERC721Contract.methods
+      .mintNFT(accounts[0], metaDataUrl, price)
       .send(transaction)
       .then((res) => {
         alert("minting success");
         afterMinting();
-        const totalSupply = ERC721Contract.methods.totalSupply();
-        setTokenid(totalSupply + 1);
+        setTokenid(tokenid + 1);
         console.log(tokenid);
-      }); // safe 민트 실행
+      });
 
-
-    console.log(MINTING);
+    return Minting;
   };
 
   const afterMinting = () => {
@@ -131,51 +130,58 @@ function Create(props) {
       });
   };
 
-
-
-    return (
-      <div>
-        <div className="main_text" > Create New Item</div>      
-        <div className="create_main" >
-          <div className="imageFile">
-            <label className="file_box"  htmlFor="ex_file">
-              <div className="file_label_div" ></div>
-            </label> 
-            <input type="file"  id="ex_file" onChange={uploadImage} name="image"  style={{ display: "none" }} />
-              <img className={"uploadImage" +(imageView ?  " on" : "" )}   />
-          </div>
-          <div className="input_name" >Name</div>
-          <input className="create_input" onChange={onChangeName}   type="text" placeholder="NFT Name"   />
-          <div className="input_name">Price</div>
-          <input className="create_input" onChange={onChangePrice}    type="text" placeholder="Price"  />
-          <div className="input_name">Collection</div>
-          <div className="create_input"></div>
-          <div className="input_name">Description</div>
-          <textarea className="description" onChange={onChangeDesc}  placeholder="Description"  /> 
-
-{/* //           <div></div>
-//           {theme.map((value,key) => {
-//               <div key ={key} >{value}</div>
-//             })
-//           } */}
-
-
-        {/* 생성 및 초기화 버튼
-          create 제출 -> nft 생성 및 db post 요청 */}
+  return (
+    <div>
+      <div className="main_text"> Create New Item</div>
+      <div className="create_main">
+        <div className="imageFile">
+          <label className="file_box" htmlFor="ex_file">
+            <div className="file_label_div"></div>
+          </label>
+          <input
+            type="file"
+            id="ex_file"
+            onChange={uploadImage}
+            name="image"
+            style={{ display: "none" }}
+          />
+          <img className={"uploadImage" + (imageView ? " on" : "")} />
+        </div>
+        <div className="input_name">Name</div>
+        <input
+          className="create_input"
+          onChange={onChangeName}
+          type="text"
+          placeholder="NFT Name"
+        />
+        <div className="input_name">Price</div>
+        <input
+          className="create_input"
+          onChange={onChangePrice}
+          type="text"
+          placeholder="Price"
+        />
+        <div className="input_name">Theme</div>
+        <select className="create_input" onChange={onChangeTheme} value={theme}>
+          <option disabled={true} value="">
+            Select theme...
+          </option>
+          <option value="art">art</option>
+          <option value="sports">sports</option>
+          <option value="photography">photography</option>
+        </select>
+        <div className="input_name">Description</div>
+        <textarea
+          className="description"
+          onChange={onChangeDesc}
+          placeholder="Description"
+        />
       </div>
       <div className="button_box">
-        <button
-          className="create_button"
-          style={{ marginRight: "30px" }}
-          onClick={minting}
-        >
+        <button className="create_button" onClick={minting}>
           {" "}
           Create{" "}
-        </button>
-//         <button className="create_button" onClick={afterMinting}>
-//           {" "}
-//           Test{" "}
-//         </button>
+        </button>{" "}
       </div>
     </div>
   );
