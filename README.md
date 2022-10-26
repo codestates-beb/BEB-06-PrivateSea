@@ -41,18 +41,19 @@ NFT 거래와 동시에 NFT를 생성, 저장을 할 수 있는 NFT 마켓플레
 npm install
 
 ```
-* /src
+
+* /server
 
 ```javascript
 
 npm install
 
 ```
-* /server
 
+* Root dir
 ```javascript
 
-npm install
+npm start
 
 ```
 
@@ -86,3 +87,6 @@ npm install
 김나혜|Front-end, Smartcontract|https://github.com/kimnahye123|
 김륜하|Front-end, Smartcontract|https://github.com/ryoonha|
 이정원|Back-end, Smartcontract|https://github.com/jungbal|
+
+### **Notion 📕** ###
+[out notion address](https://www.notion.so/r-madeby-h/1-4bef38282c2e4dfebe8508d280632fb1)
