@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 
+
 // mypage 접속 => useEffect에서 데이터 로드후 
 // state에 배열값을 채우고 
 // 보여지는 부분에서 state값을 통해 데이터 값을 map형식으로 보여주기
@@ -71,6 +72,7 @@ function Mypage() {
 
         </div>
     )
+
 }
 
 

@@ -49,19 +49,42 @@ function Explore(props) {
   }
 
   return (
+    
     <div>
-      <div className="slider_text" >Explore nfts</div>
-      <div className="explore_menu" >
-        <div className={"explore_menu_text" + ( props.theme == "trending" ? " on" : "" ) }  onClick={getThemeNft} value="trending">
+      <div className="slider_text"></div>
+      <div className="explore_menu">
+        <div
+          className={
+            "explore_menu_text" + (props.theme == "trending" ? " on" : "")
+          }
+          onClick={getThemeNft}
+          value="trending"
+        >
           trending
         </div>
-        <div className={"explore_menu_text" + ( props.theme == "art" ? " on" : "" ) }  onClick={getThemeNft} value="art">
+        <div
+          className={"explore_menu_text" + (props.theme == "art" ? " on" : "")}
+          onClick={getThemeNft}
+          value="art"
+        >
           art
         </div>
-        <div className={"explore_menu_text" + ( props.theme == "sport" ? " on" : "" ) }  onClick={getThemeNft} value="sport">
-          sport
+        <div
+          className={
+            "explore_menu_text" + (props.theme == "sports" ? " on" : "")
+          }
+          onClick={getThemeNft}
+          value="sports"
+        >
+          sports
         </div>
-        <div className={"explore_menu_text" + ( props.theme == "photography" ? " on" : "" ) }  onClick={getThemeNft} value="photography">
+        <div
+          className={
+            "explore_menu_text" + (props.theme == "photography" ? " on" : "")
+          }
+          onClick={getThemeNft}
+          value="photography"
+        >
           photography
         </div>
       </div>
@@ -76,27 +99,29 @@ function Explore(props) {
           <div>
             {props.allNfts.map((a) => {
               return (
-                <div className="explore_img_box" >
-                  <div className="overflow_box" >
-                      <img
+                <div className="explore_img_box">
+                  <div className="overflow_box">
+                    <img
                       className="explore_img"
-                        alt="nft"
-                        src={a.url}
-                        value={a.tokenid}
-                        onClick={handleImageClick}
-                      ></img>
-                    </div>
-                    <div className="preview_box" >
-                      <img className="explore_img_preview"
-                        alt="nft"
-                        src={a.url}
-                      ></img>
-                    </div>
-                  
-                    {/* <div>{a.price}</div> */}
-                    <div className="explore_button" onClick={props.handleBuy}>buy</div>
-                    <div className="explore_text" >{a.name}</div>
-                  
+                      alt="nft"
+                      src={a.url}
+                      value={a.tokenid}
+                      onClick={handleImageClick}
+                    ></img>
+                  </div>
+                  <div className="preview_box">
+                    <img
+                      className="explore_img_preview"
+                      alt="nft"
+                      src={a.url}
+                    ></img>
+                  </div>
+
+                  {/* <div>{a.price}</div> */}
+                  <div className="explore_button" onClick={props.handleBuy}>
+                    buy
+                  </div>
+                  <div className="explore_text">{a.name}</div>
                 </div>
               );
             })}
@@ -107,26 +132,29 @@ function Explore(props) {
               .filter((a) => a.theme == props.theme)
               .map((nft) => {
                 return (
-                  <div  className="explore_img_box" >
-                      <div className="overflow_box" >
-                    <img
-                      className="explore_img"
-                      alt="Theme nft"
-                      src={nft.url}
-                      value={nft.tokenid}
-                      onClick={handleImageClick}
-                    ></img>
+                  <div className="explore_img_box">
+                    <div className="overflow_box">
+                      <img
+                        className="explore_img"
+                        alt="Theme nft"
+                        src={nft.url}
+                        value={nft.tokenid}
+                        onClick={handleImageClick}
+                      ></img>
                     </div>
-                    <div className="preview_box" >
-                      <img className="explore_img_preview"
+                    <div className="preview_box">
+                      <img
+                        className="explore_img_preview"
                         alt="nft"
                         src={nft.url}
                       ></img>
                     </div>
-                
+
                     {/* <div>{nft.price}</div> */}
-                    <div className="explore_button" onClick={props.handleBuy}>buy</div>
-                    <div className="explore_text" >{nft.name}</div>
+                    <div className="explore_button" onClick={props.handleBuy}>
+                      buy
+                    </div>
+                    <div className="explore_text">{nft.name}</div>
                   </div>
                 );
               })}

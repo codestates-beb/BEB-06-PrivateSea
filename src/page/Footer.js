@@ -9,27 +9,31 @@ import { faHouseUser } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
-    <div className="footer-content">
       <footer className="footer">
-        {/* <h3>Foolish Developer</h3>
+        
+        <div className="footer_div" >
+        <div className="footer_h1" >Foolish Developer</div>
+          <div className="footer_text" >Join the community</div>
+          <i className="footer_icon" >
+            <FontAwesomeIcon icon={faHouseUser}  />
+          </i>
+          <i className="footer_icon" >
+            <FontAwesomeIcon icon={faSquareFacebook} />
+          </i>
+          <i className="footer_icon" >
+            <FontAwesomeIcon icon={faSquareGithub}  />
+          </i>
+        </div>
 
-        <p>Join the community</p>
-        <i>
-          <FontAwesomeIcon icon={faHouseUser}  />
-        </i>
-        <i>
-          <FontAwesomeIcon icon={faSquareFacebook} />
-        </i>
-        <i>
-          <FontAwesomeIcon icon={faSquareGithub}  />
-        </i>
-        <p>
-          The world’s first and largest digital marketplace for crypto
-          collectibles and non-fungible tokens (NFTs). Buy, sell, and discover
-          exclusive digital items.
-        </p> */}
+        <div className="footer_div" style={{ fontSize: "12px"}}  >
+          <div style={{  marginLeft: "200px" }}>
+            <div>The world’s first and largest digital marketplace for crypto</div>
+            <div>collectibles and non-fungible tokens (NFTs). Buy, sell, and discover</div>
+            <div>exclusive digital items.</div>
+          </div> 
+        </div> 
+
       </footer>
-    </div>
   );
 }
 
