@@ -352,10 +352,11 @@ code {
   height: 50px;
   text-align: center;
   cursor: pointer;
+
 }
 
 .button_box {
-  width: 230px;
+  width: 105px;
   margin: 50px auto;
 }
 
