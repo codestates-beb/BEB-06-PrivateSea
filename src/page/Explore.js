@@ -118,7 +118,7 @@ function Explore(props) {
                   </div>
 
                   {/* <div>{a.price}</div> */}
-                  <div className="explore_button" onClick={props.handleBuy}>
+                  <div className="explore_button" value={a._id}  onClick={props.handleBuy}>
                     buy
                   </div>
                   <div className="explore_text">{a.name}</div>

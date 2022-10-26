@@ -18,7 +18,7 @@ function Detail(props) {
                   <div className="detail_d_text" >Sale ends November 24, 2022 at 11:11pm GMT+9 </div>
                   <div className="current_price" > Current price</div>
                   <div className="detail_price" >{i.price}</div>
-                  <button className="detail_button"  onClick={props.handleBuy}>buy</button>
+                  <div className="detail_button" value={i._id}  onClick={props.handleBuy}>buy</div>
                 </div>
 
                 <div className="owned" >Owned by : {i.owner}</div>

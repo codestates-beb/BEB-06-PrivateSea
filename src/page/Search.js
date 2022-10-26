@@ -11,7 +11,7 @@ function Search(props) {
             <div className="overflow_box"> <img className="explore_img" src={nft.url} value={nft.tokenid} /></div>
             <div className="search_name" >{nft.name}</div>
             <div className="search_price">{nft.price}</div>
-            <button  className="explore_button" onClick={props.handleBuy}>buy</button>
+            <div  className="explore_button" value = {nft._id}  onClick={props.handleBuy}>buy</div>
           </div>
         ))}
       </div>
